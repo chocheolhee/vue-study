@@ -17,9 +17,9 @@
           >
           <div
               v-if="subjectError"
-              style="color: red"
+              class="text-red"
           >
-            {{ subjectError}}
+            {{ subjectError }}
           </div>
         </div>
       </div>
@@ -60,12 +60,13 @@
     </button>
 
   </form>
-
-  <Toast
-      v-if="showToast"
-      :message="toastMessage"
-      :type="toastAlertType"
-  />
+  <transition name="fade">
+    <Toast
+        v-if="showToast"
+        :message="toastMessage"
+        :type="toastAlertType"
+    />
+  </transition>
 </template>
 <script>
 import {useRoute, useRouter} from "vue-router";
@@ -141,7 +142,7 @@ export default {
     };
 
     const onSave = async () => {
-      if (!todo.value.subject){
+      if (!todo.value.subject) {
         subjectError.value = 'Subject is required';
         return;
       }
@@ -190,6 +191,25 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.text-red {
+  color: red;
+}
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+  transform: translateY(0px);
+}
 </style>
