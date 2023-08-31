@@ -21,16 +21,6 @@
       "id": 12
     },
     {
-      "subject": "555",
-      "completed": true,
-      "id": 13
-    },
-    {
-      "subject": "bbb",
-      "completed": false,
-      "id": 14
-    },
-    {
       "data": {
         "subject": "aaaaaaa",
         "completed": false,
